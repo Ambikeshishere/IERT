@@ -8,10 +8,24 @@ body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(to right, #00c6ff, #0072ff);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     height: 100vh;
     overflow: hidden;
+}
+
+/* Search Bar */
+.search-bar {
+    margin: 20px 0;
+}
+
+.search-bar input {
+    padding: 10px 15px;
+    width: 300px;
+    border: 2px solid #0072ff;
+    border-radius: 25px;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .card-container {
@@ -19,7 +33,7 @@ body {
     width: 420px;
     height: 550px;
     perspective: 1000px;
-    overflow: hidden; /* Hide overflowing cards */
+    overflow: hidden;
 }
 
 .profile-card {
@@ -34,14 +48,14 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 30px;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth transition */
-    opacity: 0; /* Hide initially */
-    visibility: hidden; /* Keep hidden except active */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .profile-card.active {
     opacity: 1;
-    visibility: visible; /* Show only the active card */
+    visibility: visible;
 }
 
 .profile-card img {
