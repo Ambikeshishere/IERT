@@ -1,79 +1,55 @@
+let currentIndex = 0;
+
 const profiles = [
     {
         name: "Toni",
-        description: "Loves coding and coffee.",
-        image: "https://via.placeholder.com/300/ff7f7f/ffffff?text=Toni",
+        info: "Loves programming and gaming.",
+        image: "https://via.placeholder.com/300/FF5733/FFFFFF?text=Toni"
     },
     {
         name: "Adam",
-        description: "Avid traveler and photographer.",
-        image: "https://via.placeholder.com/300/7f7fff/ffffff?text=Adam",
+        info: "Avid traveler and photographer.",
+        image: "https://via.placeholder.com/300/33FF57/FFFFFF?text=Adam"
     },
     {
         name: "Eve",
-        description: "Passionate about art and design.",
-        image: "https://via.placeholder.com/300/ff7fff/ffffff?text=Eve",
+        info: "Enjoys painting and drawing.",
+        image: "https://via.placeholder.com/300/3357FF/FFFFFF?text=Eve"
     },
     {
         name: "Horsa",
-        description: "Fitness enthusiast and cook.",
-        image: "https://via.placeholder.com/300/ffff7f/ffffff?text=Horsa",
+        info: "Fascinated by science and technology.",
+        image: "https://via.placeholder.com/300/FF33A1/FFFFFF?text=Horsa"
     },
     {
         name: "Abhay",
-        description: "Tech lover and gamer.",
-        image: "https://via.placeholder.com/300/7fff7f/ffffff?text=Abhay",
-    },
+        info: "Loves reading and writing.",
+        image: "https://via.placeholder.com/300/FFAA33/FFFFFF?text=Abhay"
+    }
 ];
 
-let currentIndex = 0;
-
-// Show profile based on index
 function showProfile(index) {
-    const profileCard = document.getElementById('profile-card');
-    const name = document.getElementById('name');
-    const description = document.getElementById('description');
-    
-    name.textContent = profiles[index].name;
-    description.textContent = profiles[index].description;
-    profileCard.querySelector('img').src = profiles[index].image;
+    const profile = profiles[index];
+    document.getElementById("profileName").innerText = profile.name;
+    document.getElementById("profileInfo").innerText = profile.info;
+    document.getElementById("profileImage").src = profile.image;
+    currentIndex = index;
 }
 
-// Event listeners for buttons
-document.getElementById('previous').addEventListener('click', function () {
-    currentIndex = (currentIndex - 1 + profiles.length) % profiles.length; // Move to the previous profile
+function nextProfile() {
+    currentIndex = (currentIndex + 1) % profiles.length;
     showProfile(currentIndex);
-});
+}
 
-document.getElementById('next').addEventListener('click', function () {
-    currentIndex = (currentIndex + 1) % profiles.length; // Move to the next profile
+function prevProfile() {
+    currentIndex = (currentIndex - 1 + profiles.length) % profiles.length;
     showProfile(currentIndex);
-});
+}
+
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("visible");
+}
 
 // Show the first profile initially
 showProfile(currentIndex);
-
-// Add event listeners to sidebar links
-document.querySelectorAll('.sidebar a').forEach(link => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault(); // Prevent default anchor behavior
-        const index = parseInt(this.getAttribute('data-index'));
-        currentIndex = index;
-        showProfile(currentIndex);
-    });
-});
-
-// Toggle sidebar visibility
-const toggleButton = document.getElementById('toggle-sidebar');
-const sidebar = document.querySelector('.sidebar');
-
-toggleButton.addEventListener('click', function () {
-    sidebar.classList.toggle('visible');
-});
-
-// Hide sidebar when clicking outside of it
-document.addEventListener('click', function (e) {
-    if (!sidebar.contains(e.target) && !toggleButton.contains(e.target)) {
-        sidebar.classList.remove('visible');
-    }
-});
