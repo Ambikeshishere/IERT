@@ -7,84 +7,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <input type="text" id="search" placeholder="Search by name..." />
-    </div>
-
-    <div class="card-container">
-        <div class="profile-card" id="profile1">
-            <img src="https://via.placeholder.com/400x400" alt="Toni">
-            <h2>Toni</h2>
-            <p>Toni is a fun-loving adventurer who loves to explore new things!</p>
-            <div class="rating">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9734;</span>
-                <span class="star">&#9734;</span>
-            </div>
+    <header>
+        <h1>Your College Name</h1>
+        <h2>Batch Year 2024</h2>
+    </header>
+    <div class="main-container">
+        <button class="toggle-button" onclick="toggleSidebar()">☰</button>
+        <div class="sidebar" id="sidebar">
+            <h3>Friends</h3>
+            <ul>
+                <li><a href="#" onclick="showProfile(0)">Toni</a></li>
+                <li><a href="#" onclick="showProfile(1)">Adam</a></li>
+                <li><a href="#" onclick="showProfile(2)">Eve</a></li>
+                <li><a href="#" onclick="showProfile(3)">Horsa</a></li>
+                <li><a href="#" onclick="showProfile(4)">Abhay</a></li>
+            </ul>
         </div>
-
-        <div class="profile-card" id="profile2">
-            <img src="https://via.placeholder.com/400x400" alt="Adam">
-            <h2>Adam</h2>
-            <p>Adam is a tech enthusiast and loves solving challenging problems.</p>
-            <div class="rating">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9734;</span>
-            </div>
-        </div>
-
-        <div class="profile-card" id="profile3">
-            <img src="https://via.placeholder.com/400x400" alt="Eve">
-            <h2>Eve</h2>
-            <p>Eve is a creative artist with a passion for painting and design.</p>
-            <div class="rating">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9734;</span>
-                <span class="star">&#9734;</span>
-                <span class="star">&#9734;</span>
-            </div>
-        </div>
-
-        <div class="profile-card" id="profile4">
-            <img src="https://via.placeholder.com/400x400" alt="Horsa">
-            <h2>Horsa</h2>
-            <p>Horsa is a sports enthusiast who enjoys outdoor activities and fitness.</p>
-            <div class="rating">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9734;</span>
-            </div>
-        </div>
-
-        <div class="profile-card" id="profile5">
-            <img src="https://via.placeholder.com/400x400" alt="Abhay">
-            <h2>Abhay</h2>
-            <p>Abhay is a talented musician with a love for classical and modern music.</p>
-            <div class="rating">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
+        <div class="card-container">
+            <div class="profile-card" id="profileCard">
+                <img src="https://via.placeholder.com/300" alt="Profile Picture" id="profileImage">
+                <h2 id="profileName">Name</h2>
+                <p id="profileInfo">Profile Information</p>
+                <div class="controls">
+                    <button onclick="prevProfile()">Previous</button>
+                    <button onclick="nextProfile()">Next</button>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="controls">
-        <button id="prev">⬅️</button>
-        <button id="next">➡️</button>
-    </div>
-
+    <footer>
+        <p>&copy; 2024 Your College Name. All Rights Reserved.</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

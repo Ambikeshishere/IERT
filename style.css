@@ -6,107 +6,210 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #00c6ff, #0072ff);
+    background-color: #f7f7f7; /* Light gray background for the body */
     display: flex;
     flex-direction: column;
-    align-items: center;
     height: 100vh;
-    overflow: hidden;
+    color: #333;
 }
 
-/* Search Bar */
-.search-bar {
-    margin: 20px 0;
+/* Header Styles */
+header {
+    background-color: rgba(30, 30, 30, 0.9); /* Soft black */
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
-.search-bar input {
-    padding: 10px 15px;
-    width: 300px;
-    border: 2px solid #0072ff;
-    border-radius: 25px;
-    font-size: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+header h1 {
+    font-size: 36px;
+    color: #fff; /* White text for the header */
+    margin-bottom: 5px;
+}
+
+header h2 {
+    font-size: 24px;
+    color: #ddd; /* Light gray text */
+}
+
+.main-container {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 100px); /* Adjust height to leave space for header */
+    position: relative; /* Set position for absolute child elements */
+}
+
+/* Toggle Button Styles */
+.toggle-button {
+    background-color: #ff4d4d; /* Button color matches theme */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px; /* Added horizontal padding */
+    cursor: pointer;
+    position: absolute; /* Position it in the main container */
+    left: 10px; /* Adjust position */
+    top: 10px; /* Adjust position */
+    z-index: 1000; /* Bring the button above other elements */
+    font-weight: bold; /* Make button text bold */
+    transition: background-color 0.3s, transform 0.3s; /* Add transform transition */
+}
+
+.toggle-button:hover {
+    background-color: #e03e3e; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: rgba(255, 182, 193, 0.9); /* Light soft pink */
+    width: 200px;
+    padding: 15px;
+    box-shadow: 0 25px 40px rgba(100, 100, 100, 0.2);
+    position: absolute; /* Position it absolutely within the main container */
+    left: 10px; /* Position it right below the toggle button */
+    top: 50px; /* Position it right below the button */
+    height: 0; /* Start with height 0 */
+    overflow: hidden; /* Hide overflow content */
+    transition: height 0.3s ease, visibility 0s 0.3s; /* Smooth transition for height */
+    visibility: hidden; /* Initially hidden */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.sidebar h3 {
+    margin-bottom: 10px;
+    font-size: 22px; /* Increased font size for headings */
+    color: #000000; /* Set color for sidebar heading */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #030303; /* Set link color */
+    padding: 8px 10px; /* Add padding for clickable area */
+    border-radius: 5px; /* Round corners for links */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover */
+}
+
+.sidebar ul li a:hover {
+    background-color: #f2f2f2; /* Light background on hover */
+    color: #e03e3e; /* Darker text on hover */
+}
+
+.sidebar.visible {
+    height: 200px; /* Set the height when visible */
+    visibility: visible; /* Make it visible */
+    transition: height 0.3s ease, visibility 0s; /* Immediate visibility */
 }
 
 .card-container {
     position: relative;
-    width: 420px;
-    height: 550px;
-    perspective: 1000px;
-    overflow: hidden;
+    width: 400px; /* Width of the card */
+    height: 500px; /* Height of the card */
+    margin: auto; /* Center the card container horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Center vertically */
+    margin-top: 20px; /* Space between header and card */
 }
 
 .profile-card {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 100%; /* Use full width of the container */
+    height: 100%; /* Use full height of the container */
     border-radius: 20px;
-    background-color: white;
+    background-color: #fff; /* White background for card */
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 30px;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    opacity: 0;
-    visibility: hidden;
+    padding: 20px; /* Adjust padding as needed */
+    transition: transform 0.3s; /* Add transition for scaling effect */
 }
 
-.profile-card.active {
-    opacity: 1;
-    visibility: visible;
+.profile-card:hover {
+    transform: scale(1.05); /* Scale up card on hover */
 }
 
 .profile-card img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+    width: 100%; /* Full width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 15px;
     margin-bottom: 20px;
-    object-fit: cover;
 }
 
 .profile-card h2 {
-    font-size: 28px;
-    color: #333;
+    font-size: 28px; /* Increased font size */
+    color: #ff4d4d; /* Set color for profile name */
 }
 
 .profile-card p {
-    font-size: 18px;
+    font-size: 18px; /* Increased font size */
     color: #555;
     text-align: center;
 }
 
-.rating {
-    display: flex;
-    justify-content: center;
-}
-
-.star {
-    font-size: 30px;
-    color: gold;
-    cursor: pointer;
-}
-
 .controls {
-    position: absolute;
-    bottom: 20px;
     display: flex;
-    justify-content: center;
-    gap: 30px;
+    justify-content: space-between;
+    width: 100%;
 }
 
 button {
     background-color: #fff;
-    border: none;
-    padding: 15px;
-    font-size: 20px;
-    border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ff4d4d; /* Border color matches theme */
+    border-radius: 5px;
+    padding: 10px 15px; /* Added horizontal padding */
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s; /* Add transition for button */
 }
 
 button:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Light background on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+button:active {
+    background-color: #ff4d4d; /* Active state color */
+    color: #fff;
+}
+
+/* Footer Styles */
+footer {
+    background-color: rgba(30, 30, 30, 0.9); /* Match the header color */
+    color: #fff; /* White text */
+    text-align: center;
+    padding: 10px 0;
+    position: relative; /* Keep it at the bottom */
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.5); /* Shadow to match header */
+    animation: slideIn 0.5s ease-in-out; /* Slide-in animation */
+}
+
+footer p {
+    margin: 0; /* Remove default margin */
+}
+
+/* Slide-in animation */
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
