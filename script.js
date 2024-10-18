@@ -2,9 +2,12 @@ let currentIndex = 0;
 
 const profiles = [
     {
-        name: "Toni",
+        name: "Ambikesh Srivastava",
         info: "Loves programming and gaming.",
-        image: "https://via.placeholder.com/300/FF5733/FFFFFF?text=Toni"
+        image: "Ambikesh.jpg",
+        instagram : "Ambikesh.py",
+        email: "Abhay2004raj15@gmail.com"
+
     },
     {
         name: "Adam",
